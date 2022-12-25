@@ -70,3 +70,7 @@ print("","This is the cleaned data frame:", cleanedDF.head(n=5), sep='\n')
 
 ### # Save Data
 ### cleanedDF.to_csv("CleanedData.csv", index=False)
+
+for n in cleanedDF['name']:
+    if len(n)>15:
+        print(n)
