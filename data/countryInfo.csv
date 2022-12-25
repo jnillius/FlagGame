@@ -1,0 +1,195 @@
+country,region,flag,country_alt,alpha2,alpha3,numeric
+Afghanistan,East Mediterranean,🇦🇫,Afghanistan,AF,AFG,4
+Albania,Europe,🇦🇱,Albania,AL,ALB,8
+Algeria,Africa,🇩🇿,Algeria,DZ,DZA,12
+Andorra,Europe,🇦🇩,Andorra,AD,AND,20
+Angola,Africa,🇦🇴,Angola,AO,AGO,24
+Antigua and Barbuda,Americas,🇦🇬,Antigua & Barbuda,AG,ATG,28
+Argentina,Americas,🇦🇷,Argentina,AR,ARG,32
+Armenia,Europe,🇦🇲,Armenia,AM,ARM,51
+Australia,West Pacific,🇦🇺,Australia,AU,AUS,36
+Austria,Europe,🇦🇹,Austria,AT,AUT,40
+Azerbaijan,Europe,🇦🇿,Azerbaijan,AZ,AZE,31
+Bahamas,Americas,🇧🇸,Bahamas,BS,BHS,44
+Bahrain,East Mediterranean,🇧🇭,Bahrain,BH,BHR,48
+Bangladesh,SE Asia,🇧🇩,Bangladesh,BD,BGD,50
+Barbados,Americas,🇧🇧,Barbados,BB,BRB,52
+Belarus,Europe,🇧🇾,Belarus,BY,BLR,112
+Belgium,Europe,🇧🇪,Belgium,BE,BEL,56
+Belize,Americas,🇧🇿,Belize,BZ,BLZ,84
+Benin,Africa,🇧🇯,Benin,BJ,BEN,204
+Bhutan,SE Asia,🇧🇹,Bhutan,BT,BTN,64
+Bolivia (Plurinational State of),Americas,🇧🇴,Bolivia,BO,BOL,68
+Bosnia and Herzegovina,Europe,🇧🇦,Bosnia & Herzegovina,BA,BIH,70
+Botswana,Africa,🇧🇼,Botswana,BW,BWA,72
+Brazil,Americas,🇧🇷,Brazil,BR,BRA,76
+Brunei Darussalam,West Pacific,🇧🇳,Brunei,BN,BRN,96
+Bulgaria,Europe,🇧🇬,Bulgaria,BG,BGR,100
+Burkina Faso,Africa,🇧🇫,Burkina Faso,BF,BFA,854
+Burundi,Africa,🇧🇮,Burundi,BI,BDI,108
+Cabo Verde,Africa,🇨🇻,Cape Verde,CV,CPV,132
+Cambodia,West Pacific,🇰🇭,Cambodia,KH,KHM,116
+Cameroon,Africa,🇨🇲,Cameroon,CM,CMR,120
+Canada,Americas,🇨🇦,Canada,CA,CAN,124
+Central African Republic,Africa,🇨🇫,Central African Republic,CF,CAF,140
+Chad,Africa,🇹🇩,Chad,TD,TCD,148
+Chile,Americas,🇨🇱,Chile,CL,CHL,152
+China,West Pacific,🇨🇳,China,CN,CHN,156
+Colombia,Americas,🇨🇴,Colombia,CO,COL,170
+Comoros,Africa,🇰🇲,Comoros,KM,COM,174
+Congo,Africa,🇨🇬,Congo - Brazzaville,CG,COG,178
+Cook Islands,West Pacific,🇨🇰,Cook Islands,CK,COK,184
+Costa Rica,Americas,🇨🇷,Costa Rica,CR,CRI,188
+Côte d’Ivoire,Africa,🇨🇮,Côte d’Ivoire,CI,CIV,384
+Croatia,Europe,🇭🇷,Croatia,HR,HRV,191
+Cuba,Americas,🇨🇺,Cuba,CU,CUB,192
+Cyprus,Europe,🇨🇾,Cyprus,CY,CYP,196
+Czechia,Europe,🇨🇿,Czechia,CZ,CZE,203
+Democratic People's Republic of Korea,SE Asia,🇰🇵,North Korea,KP,PRK,408
+Democratic Republic of the Congo,Africa,🇨🇩,Congo - Kinshasa,CD,COD,180
+Denmark,Europe,🇩🇰,Denmark,DK,DNK,208
+Djibouti,East Mediterranean,🇩🇯,Djibouti,DJ,DJI,262
+Dominica,Americas,🇩🇲,Dominica,DM,DMA,212
+Dominican Republic,Americas,🇩🇴,Dominican Republic,DO,DOM,214
+Ecuador,Americas,🇪🇨,Ecuador,EC,ECU,218
+Egypt,East Mediterranean,🇪🇬,Egypt,EG,EGY,818
+El Salvador,Americas,🇸🇻,El Salvador,SV,SLV,222
+Equatorial Guinea,Africa,🇬🇶,Equatorial Guinea,GQ,GNQ,226
+Eritrea,Africa,🇪🇷,Eritrea,ER,ERI,232
+Estonia,Europe,🇪🇪,Estonia,EE,EST,233
+Eswatini,Africa,🇸🇿,Eswatini,SZ,SWZ,748
+Ethiopia,Africa,🇪🇹,Ethiopia,ET,ETH,231
+Fiji,West Pacific,🇫🇯,Fiji,FJ,FJI,242
+Finland,Europe,🇫🇮,Finland,FI,FIN,246
+France,Europe,🇫🇷,France,FR,FRA,250
+Gabon,Africa,🇬🇦,Gabon,GA,GAB,266
+Gambia,Africa,🇬🇲,Gambia,GM,GMB,270
+Georgia,Europe,🇬🇪,Georgia,GE,GEO,268
+Germany,Europe,🇩🇪,Germany,DE,DEU,276
+Ghana,Africa,🇬🇭,Ghana,GH,GHA,288
+Greece,Europe,🇬🇷,Greece,GR,GRC,300
+Grenada,Americas,🇬🇩,Grenada,GD,GRD,308
+Guatemala,Americas,🇬🇹,Guatemala,GT,GTM,320
+Guinea,Africa,🇬🇳,Guinea,GN,GIN,324
+Guinea-Bissau,Africa,🇬🇼,Guinea-Bissau,GW,GNB,624
+Guyana,Americas,🇬🇾,Guyana,GY,GUY,328
+Haiti,Americas,🇭🇹,Haiti,HT,HTI,332
+Honduras,Americas,🇭🇳,Honduras,HN,HND,340
+Hungary,Europe,🇭🇺,Hungary,HU,HUN,348
+Iceland,Europe,🇮🇸,Iceland,IS,ISL,352
+India,SE Asia,🇮🇳,India,IN,IND,356
+Indonesia,SE Asia,🇮🇩,Indonesia,ID,IDN,360
+Iran (Islamic Republic of),East Mediterranean,🇮🇷,Iran,IR,IRN,364
+Iraq,East Mediterranean,🇮🇶,Iraq,IQ,IRQ,368
+Ireland,Europe,🇮🇪,Ireland,IE,IRL,372
+Israel,Europe,🇮🇱,Israel,IL,ISR,376
+Italy,Europe,🇮🇹,Italy,IT,ITA,380
+Jamaica,Americas,🇯🇲,Jamaica,JM,JAM,388
+Japan,West Pacific,🇯🇵,Japan,JP,JPN,392
+Jordan,East Mediterranean,🇯🇴,Jordan,JO,JOR,400
+Kazakhstan,Europe,🇰🇿,Kazakhstan,KZ,KAZ,398
+Kenya,Africa,🇰🇪,Kenya,KE,KEN,404
+Kiribati,West Pacific,🇰🇮,Kiribati,KI,KIR,296
+Kuwait,East Mediterranean,🇰🇼,Kuwait,KW,KWT,414
+Kyrgyzstan,Europe,🇰🇬,Kyrgyzstan,KG,KGZ,417
+Lao People's Democratic Republic,West Pacific,🇱🇦,Laos,LA,LAO,418
+Latvia,Europe,🇱🇻,Latvia,LV,LVA,428
+Lebanon,East Mediterranean,🇱🇧,Lebanon,LB,LBN,422
+Lesotho,Africa,🇱🇸,Lesotho,LS,LSO,426
+Liberia,Africa,🇱🇷,Liberia,LR,LBR,430
+Libya,East Mediterranean,🇱🇾,Libya,LY,LBY,434
+Lithuania,Europe,🇱🇹,Lithuania,LT,LTU,440
+Luxembourg,Europe,🇱🇺,Luxembourg,LU,LUX,442
+Madagascar,Africa,🇲🇬,Madagascar,MG,MDG,450
+Malawi,Africa,🇲🇼,Malawi,MW,MWI,454
+Malaysia,West Pacific,🇲🇾,Malaysia,MY,MYS,458
+Maldives,SE Asia,🇲🇻,Maldives,MV,MDV,462
+Mali,Africa,🇲🇱,Mali,ML,MLI,466
+Malta,Europe,🇲🇹,Malta,MT,MLT,470
+Marshall Islands,West Pacific,🇲🇭,Marshall Islands,MH,MHL,584
+Mauritania,Africa,🇲🇷,Mauritania,MR,MRT,478
+Mauritius,Africa,🇲🇺,Mauritius,MU,MUS,480
+Mexico,Americas,🇲🇽,Mexico,MX,MEX,484
+Micronesia (Federated States of),West Pacific,🇫🇲,Micronesia,FM,FSM,583
+Monaco,Europe,🇲🇨,Monaco,MC,MCO,492
+Mongolia,West Pacific,🇲🇳,Mongolia,MN,MNG,496
+Montenegro,Europe,🇲🇪,Montenegro,ME,MNE,499
+Morocco,East Mediterranean,🇲🇦,Morocco,MA,MAR,504
+Mozambique,Africa,🇲🇿,Mozambique,MZ,MOZ,508
+Myanmar,SE Asia,🇲🇲,Myanmar (Burma),MM,MMR,104
+Namibia,Africa,🇳🇦,Namibia,,NAM,516
+Nauru,West Pacific,🇳🇷,Nauru,NR,NRU,520
+Nepal,SE Asia,🇳🇵,Nepal,NP,NPL,524
+Netherlands,Europe,🇳🇱,Netherlands,NL,NLD,528
+New Zealand,West Pacific,🇳🇿,New Zealand,NZ,NZL,554
+Nicaragua,Americas,🇳🇮,Nicaragua,NI,NIC,558
+Niger,Africa,🇳🇪,Niger,NE,NER,562
+Nigeria,Africa,🇳🇬,Nigeria,NG,NGA,566
+Niue,West Pacific,🇳🇺,Niue,NU,NIU,570
+The former Yugoslav Republic of Macedonia,Europe,🇲🇰,North Macedonia,MK,MKD,807
+Norway,Europe,🇳🇴,Norway,NO,NOR,578
+Oman,East Mediterranean,🇴🇲,Oman,OM,OMN,512
+Pakistan,East Mediterranean,🇵🇰,Pakistan,PK,PAK,586
+Palau,West Pacific,🇵🇼,Palau,PW,PLW,585
+Panama,Americas,🇵🇦,Panama,PA,PAN,591
+Papua New Guinea,West Pacific,🇵🇬,Papua New Guinea,PG,PNG,598
+Paraguay,Americas,🇵🇾,Paraguay,PY,PRY,600
+Peru,Americas,🇵🇪,Peru,PE,PER,604
+Philippines,West Pacific,🇵🇭,Philippines,PH,PHL,608
+Poland,Europe,🇵🇱,Poland,PL,POL,616
+Portugal,Europe,🇵🇹,Portugal,PT,PRT,620
+Qatar,East Mediterranean,🇶🇦,Qatar,QA,QAT,634
+Republic of Korea,West Pacific,🇰🇷,South Korea,KR,KOR,410
+Republic of Moldova,Europe,🇲🇩,Moldova,MD,MDA,498
+Romania,Europe,🇷🇴,Romania,RO,ROU,642
+Russian Federation,Europe,🇷🇺,Russia,RU,RUS,643
+Rwanda,Africa,🇷🇼,Rwanda,RW,RWA,646
+Saint Kitts and Nevis,Americas,🇰🇳,St. Kitts & Nevis,KN,KNA,659
+Saint Lucia,Americas,🇱🇨,St. Lucia,LC,LCA,662
+Saint Vincent and the Grenadines,Americas,🇻🇨,St. Vincent & Grenadines,VC,VCT,670
+Samoa,West Pacific,🇼🇸,Samoa,WS,WSM,882
+San Marino,Europe,🇸🇲,San Marino,SM,SMR,674
+Sao Tome and Principe,Africa,🇸🇹,São Tomé & Príncipe,ST,STP,678
+Saudi Arabia,East Mediterranean,🇸🇦,Saudi Arabia,SA,SAU,682
+Senegal,Africa,🇸🇳,Senegal,SN,SEN,686
+Serbia,Europe,🇷🇸,Serbia,RS,SRB,688
+Seychelles,Africa,🇸🇨,Seychelles,SC,SYC,690
+Sierra Leone,Africa,🇸🇱,Sierra Leone,SL,SLE,694
+Singapore,West Pacific,🇸🇬,Singapore,SG,SGP,702
+Slovakia,Europe,🇸🇰,Slovakia,SK,SVK,703
+Slovenia,Europe,🇸🇮,Slovenia,SI,SVN,705
+Solomon Islands,West Pacific,🇸🇧,Solomon Islands,SB,SLB,90
+Somalia,East Mediterranean,🇸🇴,Somalia,SO,SOM,706
+South Africa,Africa,🇿🇦,South Africa,ZA,ZAF,710
+South Sudan,Africa,🇸🇸,South Sudan,SS,SSD,728
+Spain,Europe,🇪🇸,Spain,ES,ESP,724
+Sri Lanka,SE Asia,🇱🇰,Sri Lanka,LK,LKA,144
+Sudan,East Mediterranean,🇸🇩,Sudan,SD,SDN,729
+Suriname,Americas,🇸🇷,Suriname,SR,SUR,740
+Sweden,Europe,🇸🇪,Sweden,SE,SWE,752
+Switzerland,Europe,🇨🇭,Switzerland,CH,CHE,756
+Syrian Arab Republic,East Mediterranean,🇸🇾,Syria,SY,SYR,760
+Tajikistan,Europe,🇹🇯,Tajikistan,TJ,TJK,762
+Thailand,SE Asia,🇹🇭,Thailand,TH,THA,764
+Timor-Leste,SE Asia,🇹🇱,Timor-Leste,TL,TLS,626
+Togo,Africa,🇹🇬,Togo,TG,TGO,768
+Tonga,West Pacific,🇹🇴,Tonga,TO,TON,776
+Trinidad and Tobago,Americas,🇹🇹,Trinidad & Tobago,TT,TTO,780
+Tunisia,East Mediterranean,🇹🇳,Tunisia,TN,TUN,788
+Turkey,Europe,🇹🇷,Turkey,TR,TUR,792
+Turkmenistan,Europe,🇹🇲,Turkmenistan,TM,TKM,795
+Tuvalu,West Pacific,🇹🇻,Tuvalu,TV,TUV,798
+Uganda,Africa,🇺🇬,Uganda,UG,UGA,800
+Ukraine,Europe,🇺🇦,Ukraine,UA,UKR,804
+United Arab Emirates,East Mediterranean,🇦🇪,United Arab Emirates,AE,ARE,784
+United Kingdom of Great Britain and Northern Ireland,Europe,🇬🇧,United Kingdom,GB,GBR,826
+United Republic of Tanzania,Africa,🇹🇿,Tanzania,TZ,TZA,834
+United States of America,Americas,🇺🇸,United States,US,USA,840
+Uruguay,Americas,🇺🇾,Uruguay,UY,URY,858
+Uzbekistan,Europe,🇺🇿,Uzbekistan,UZ,UZB,860
+Vanuatu,West Pacific,🇻🇺,Vanuatu,VU,VUT,548
+Venezuela (Bolivarian Republic of),Americas,🇻🇪,Venezuela,VE,VEN,862
+Viet Nam,West Pacific,🇻🇳,Vietnam,VN,VNM,704
+Yemen,East Mediterranean,🇾🇪,Yemen,YE,YEM,887
+Zambia,Africa,🇿🇲,Zambia,ZM,ZMB,894
+Zimbabwe,Africa,🇿🇼,Zimbabwe,ZW,ZWE,716
