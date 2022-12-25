@@ -4,42 +4,35 @@ import pandas as pd
 import random 
 import time
 
+# Game parameters
+WIDTH, HEIGHT = 900, 500
+FPS = 30
+
+# Game constants
 pg.font.init()
 pg.mixer.init()
-
-WIDTH, HEIGHT = 900, 500
-FLAG_WIDTH, FLAG_HEIGHT = 200, 120
 SCREEN = pg.display.set_mode((WIDTH, HEIGHT))
+COLOR_INACTIVE = pg.Color('lightskyblue3')
+COLOR_ACTIVE = pg.Color('dodgerblue2')
+RESULT_FONT = pg.font.Font(None, 32)
+pg.display.set_caption("Flag guessing game!")
 BACKGROUND = pg.transform.scale(pg.image.load(
     os.path.join('Assets', 'Background', 'cloudy_background.jpg')), (WIDTH, HEIGHT))
-pg.display.set_caption("Flag guessing game!")
-
+# Colours
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 GREEN = (0, 255, 0)
-
-HEALTH_FONT = pg.font.SysFont('comicsans', 40)
-WINNER_FONT = pg.font.SysFont('comicsans', 100)
-FPS = 30
-
+# Get cleaned data
 sheetPath = os.path.join("information", "CleanedData.csv")
 df = pd.read_csv(sheetPath, sep=',')
-
-
 allNames = df['name'].values
 allISO = df['iso'].values
 numberOfCountries = len(allNames)
 
-### Make in input text box
-COLOR_INACTIVE = pg.Color('lightskyblue3')
-COLOR_ACTIVE = pg.Color('dodgerblue2')
-FONT = pg.font.Font(None, 32)
-
-def LoadFlag(name):
-    flag = pg.image.load(os.path.join('Assets', 'Flags', name + ".png"))
-    # flag = pg.transform.scale_by(flag, 0.2) #(FLAG_WIDTH, FLAG_HEIGHT) 
+def LoadFlag(iso):
+    flag = pg.image.load(os.path.join('Assets', 'Flags', iso + ".png"))
     flag = pg.transform.rotozoom(flag, 0, 0.2)
     return flag, flag.get_width(), flag.get_height()
 
@@ -56,15 +49,9 @@ class indexation:
 def draw_flag(newFlag, index):
     if newFlag:
         index.randomize()
-    
-    idx = index.get() 
-    flag, flagWidth, flagHeight = LoadFlag(allISO[idx])
 
+    flag, flagWidth, flagHeight = LoadFlag(allISO[index.get()])
     SCREEN.blit(flag, ((WIDTH-flagWidth)/2, HEIGHT/2-flagHeight))
-
-    randomText = HEALTH_FONT.render("This is the "+allNames[idx]+"-flag!", 1, BLACK)
-    SCREEN.blit(randomText, (WIDTH - randomText.get_width() - 10, 10))
-
 
 def main():
     run = True
@@ -105,12 +92,12 @@ def main():
             input_box.w = width
             SCREEN.blit(txt_surface, (input_box.x+5, input_box.y+5))
             pg.draw.rect(SCREEN, color, input_box, 2)
-            # Right flag?
+            # Check guess
             if newFlag:
                 if (answer.lower() == allNames[index.get()].lower()):
-                    Msg = HEALTH_FONT.render("You are correct! This is the flag of "+allNames[index.get()]+"!", 1, GREEN)
+                    Msg = RESULT_FONT.render("You are correct! This is the flag of "+allNames[index.get()]+"!", 1, GREEN)
                 else:
-                    Msg = HEALTH_FONT.render("Unfortunately this is the flag of "+allNames[index.get()]+".", 1, RED)
+                    Msg = RESULT_FONT.render("Unfortunately this is the flag of "+allNames[index.get()]+".", 1, RED)
 
                 SCREEN.blit(Msg, (WIDTH/2 - Msg.get_width()/2 - 10, HEIGHT/2))
                 pg.display.update()
@@ -120,14 +107,13 @@ def main():
                 break
             # Render flag:
             draw_flag(newFlag, index)
+            # Cheating
+            cheatingText = RESULT_FONT.render("This is the "+allNames[index.get()]+"-flag!", 1, BLACK)
+            SCREEN.blit(cheatingText, (WIDTH - cheatingText.get_width() - 10, 10))
+            # Update display
             pg.display.update()
+            # Reset bool
             newFlag = False
-
-        # time.sleep(2)
-
-        # keys_pressed = pg.key.get_pressed()
-
-            
 
     main()
 
