@@ -53,12 +53,19 @@ def draw_flag(index):
     flag, flagWidth, flagHeight = LoadFlag(allISO[index.get()])
     SCREEN.blit(flag, ((WIDTH-flagWidth)/2, (HEIGHT/2)-flagHeight))
 
+def checkAnswer(guess, index):
+    correctCountry = allNames[index.get()].lower()
+    # parenthesis data fix:
+    correctCountry = (correctCountry+" (").split('(')[0][:-1]
+
+    return guess.lower() == correctCountry
+
 def main():
     # Initializations
     run = True
     index = indexation()
     newFlag = False
-    answer = ''
+    guess = ''
     text = ''
     score = 0 
     streak = 0
@@ -79,7 +86,7 @@ def main():
                 pg.quit()
             if event.type == pg.KEYDOWN:    
                 if event.key == pg.K_RETURN:
-                    answer = text
+                    guess = text
                     text = ''
                     newFlag = True
                 elif event.key == pg.K_BACKSPACE:
@@ -97,7 +104,7 @@ def main():
             pg.draw.rect(SCREEN, color, input_box, 2)
             # Check guess
             if newFlag:
-                if (answer.lower() == allNames[index.get()].lower()):
+                if (checkAnswer(guess, index)):
                     Msg = RESULT_FONT.render("You are correct! This is the flag of "+allNames[index.get()]+"!", 1, GREEN)
                     score += 1
                     streak += 1
