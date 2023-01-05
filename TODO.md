@@ -21,3 +21,4 @@
     * Kazakstan is not in Europe
 * 1 country is missing, which?
 * Add Taiwan and Hong Kong?
+* webscrape own data?
