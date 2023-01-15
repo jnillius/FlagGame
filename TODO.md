@@ -22,3 +22,4 @@
 * 1 country is missing, which?
 * Add Taiwan and Hong Kong?
 * webscrape own data?
+* Use regex in guess checking function "checkAnswer()"
