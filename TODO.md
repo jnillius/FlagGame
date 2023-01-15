@@ -13,6 +13,8 @@
     * iso
 * Wait after guess
     * wait until players says continue
+* Show on map where country is
+* Suggest close countries under textbox
 
 ## Buggs to fix:
 * add aliases for 'republic of'-countries
