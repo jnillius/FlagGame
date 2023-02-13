@@ -15,21 +15,27 @@ SCREEN = pg.display.set_mode((WIDTH, HEIGHT))
 COLOR_INACTIVE = pg.Color('lightskyblue3')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
 RESULT_FONT = pg.font.Font(None, 32)
+HINT_FONT = pg.font.Font(None, 32)
 SCORE_FONT = pg.font.Font(None, 32)
 pg.display.set_caption("Flag guessing game!")
 BACKGROUND = pg.transform.scale(pg.image.load(
     os.path.join('Assets', 'Background', 'cloudy_background.jpg')), (WIDTH, HEIGHT))
+
 # Colours
-WHITE = (255, 255, 255)
+#WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
-YELLOW = (255, 255, 0)
+#YELLOW = (255, 255, 0)
 GREEN = (0, 255, 0)
+
 # Get cleaned data
 sheetPath = os.path.join("information", "CleanedData.csv")
 df = pd.read_csv(sheetPath, sep=',')
 allNames = df['name'].values
 allISO = df['iso'].values
+allContinents = df['region'].values
+allPopulation = df['population'].values
+
 numberOfCountries = len(allNames)
 
 class indexation:
@@ -60,7 +66,22 @@ def checkAnswer(guess, index):
 
     return guess.lower() == correctCountry
 
+def getContinent(index):
+    return allContinents[index]
+
+def getPopulation(index):
+    print(str(allPopulation[index]))
+    population = ''
+    for i, j in enumerate(str(allPopulation[index])[::-1]):
+        population += j
+        if i > 0 and (i+1)%3 == 0:
+            population += '.'
+    return population[0:-1][::-1] if population[-1] == '.' else population[::-1]
+
 def main():
+    # Hints
+    show_population = True
+    show_continent = True
     # Initializations
     run = True
     index = indexation()
@@ -118,6 +139,13 @@ def main():
             # Cheating
             cheatingText = RESULT_FONT.render("This is the flag of "+allNames[index.get()]+"!", 1, BLACK)
             SCREEN.blit(cheatingText, (WIDTH - cheatingText.get_width() - 10, HEIGHT-35))
+            # Hints
+            if show_continent:
+                continent_text = HINT_FONT.render("Continent: " + getContinent(index.get()), 1, BLACK)
+                SCREEN.blit(continent_text, (10, 10))
+            if show_population:
+                population_text = HINT_FONT.render("Population: " + str(getPopulation(index.get())), 1, BLACK)
+                SCREEN.blit(population_text, (10 , 20 + HINT_FONT.get_height()))  
             # Render score:
             scoreText = SCORE_FONT.render("Score:", 1, BLACK)
             streakText = SCORE_FONT.render("Streak:", 1, BLACK)
