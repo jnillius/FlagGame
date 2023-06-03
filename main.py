@@ -30,8 +30,8 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 
 # Get cleaned data
-sheet_path = os.path.join("information", "CleanedData.csv")
-df = pd.read_csv(sheet_path, sep=',')
+sheet_path = os.path.join("information", "CleanedDataManuallyFixed.csv") 
+df = pd.read_csv(sheet_path, sep=',', keep_default_na=False)
 country_names = df['name'].values
 country_isos = df['iso'].values
 continents = df['region'].values
@@ -74,11 +74,13 @@ def drawFlag(country_index):
     SCREEN.blit(flag, ((WIDTH-flagWidth)/2, (HEIGHT/2)-flagHeight))
 
 def checkAnswer(guess, country_index):
-    correctCountry = country_names[country_index].lower()
-    # parenthesis data fix:
-    correctCountry = (correctCountry + " (").split('(')[0][:-1] # TODO: use regex
-
-    return guess.lower() == correctCountry
+    # correctCountry = country_names[country_index].lower()
+    allowed_guesses = country_names[country_index].lower().split('/')
+    
+    for allowed_guess in allowed_guesses:
+        if guess == allowed_guess:
+            return True
+    return False
 
 def getContinent(country_index):
     return continents[country_index]
@@ -151,8 +153,8 @@ def main():
                 SCREEN.blit(guess_response_message, ((WIDTH/2) - (guess_response_message.get_width()/2) - 10, (HEIGHT/2)+20))
             # Render flag:
             drawFlag(countries.getCurrentIndex())
-            # Region toggels
-
+            # TODO: Region toggels
+            
             # Cheating
             cheating_text = RESULT_FONT.render("This is the flag of {}!".format(country_names[countries.getCurrentIndex()]), 1, BLACK)
             SCREEN.blit(cheating_text, (WIDTH - cheating_text.get_width() - 10, HEIGHT-35))
