@@ -30,50 +30,62 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 
 # Get cleaned data
-sheetPath = os.path.join("information", "CleanedData.csv")
-df = pd.read_csv(sheetPath, sep=',')
-allNames = df['name'].values
-allISO = df['iso'].values
-allContinents = df['region'].values
-allPopulation = df['population'].values
+sheet_path = os.path.join("information", "CleanedData.csv")
+df = pd.read_csv(sheet_path, sep=',')
+country_names = df['name'].values
+country_isos = df['iso'].values
+continents = df['region'].values
+country_populations = df['population'].values
 
-numberOfCountries = len(allNames)
+number_of_countries = len(country_names)
+countries_used = number_of_countries # TODO: change this when you can play from certain region 
+# countryPropability = ([1] * number_of_countries) / number_of_countries # TODO: use something like this
 
-class indexation:
+class Countries:
     def __init__(self):
-        self.idx = random.randint(0, numberOfCountries-1)
+        self.idx = random.randint(0, number_of_countries-1)
+        self.weights = [1/number_of_countries] * number_of_countries
 
-    def get(self):
+    def getCurrentIndex(self):
         return self.idx
 
-    def randomize(self):
-        self.idx = random.randint(0, numberOfCountries-1)
+    def update(self, correct):
+        factor = 10
+        if correct:
+            self.weights[self.idx] /= factor
+        else:
+            self.weights[self.idx] *= factor
+        self.randomize()
 
-def LoadFlag(iso):
+    def randomize(self):
+        sum_of_weights = sum(self.weights)
+        multinomial_distribution = [x/sum_of_weights for x in self.weights]
+        self.idx = list(np.random.multinomial(1, multinomial_distribution)).index(1)
+
+def loadFlag(iso):
     flag = pg.image.load(os.path.join('Assets', 'Flags', iso + ".png"))
     flag = pg.transform.rotozoom(flag, 0, 0.2)
     if (flag.get_height()> HEIGHT/2):
         flag = pg.transform.rotozoom(flag, 0, (HEIGHT/2.1)/flag.get_height())
     return flag, flag.get_width(), flag.get_height()
 
-def draw_flag(index):
-    flag, flagWidth, flagHeight = LoadFlag(allISO[index.get()])
+def drawFlag(country_index):
+    flag, flagWidth, flagHeight = loadFlag(country_isos[country_index])
     SCREEN.blit(flag, ((WIDTH-flagWidth)/2, (HEIGHT/2)-flagHeight))
 
-def checkAnswer(guess, index):
-    correctCountry = allNames[index.get()].lower()
+def checkAnswer(guess, country_index):
+    correctCountry = country_names[country_index].lower()
     # parenthesis data fix:
     correctCountry = (correctCountry + " (").split('(')[0][:-1] # TODO: use regex
 
     return guess.lower() == correctCountry
 
-def getContinent(index):
-    return allContinents[index]
+def getContinent(country_index):
+    return continents[country_index]
 
-def getPopulation(index):
-    print(str(allPopulation[index]))
+def getPopulation(country_index):
     population = ''
-    for i, j in enumerate(str(allPopulation[index])[::-1]):
+    for i, j in enumerate(str(country_populations[country_index])[::-1]):
         population += j
         if i > 0 and (i+1)%3 == 0:
             population += '.'
@@ -85,12 +97,13 @@ def main():
     show_continent = True
     # Initializations
     run = True
-    index = indexation()
+    countries = Countries()
     guess_submitted = False
     guess = ''
     text = ''
     score = 0 
     streak = 0
+    guess_correct = False
     # Text box
     font = pg.font.Font(None, 32)
     clock = pg.time.Clock()
@@ -126,29 +139,29 @@ def main():
             pg.draw.rect(SCREEN, color, input_box, 2)
             # Check guess
             if guess_submitted:
-                if (checkAnswer(guess, index)):
-                    guess_response_message = RESULT_FONT.render("You are correct! This is the flag of {}.".format(allNames[index.get()]), 1, GREEN)
+                if (checkAnswer(guess, countries.getCurrentIndex())):
+                    guess_response_message = RESULT_FONT.render("You are correct! This is the flag of {}.".format(country_names[countries.getCurrentIndex()]), 1, GREEN)
                     score += 1
                     streak += 1
-                    
+                    guess_correct = True
                 else:
-                    guess_response_message = RESULT_FONT.render("Unfortunately this is the flag of {}.".format(allNames[index.get()]), 1, RED)
+                    guess_response_message = RESULT_FONT.render("Unfortunately this is the flag of {}.".format(country_names[countries.getCurrentIndex()]), 1, RED)
                     streak = 0
-
+                    guess_correct = False
                 SCREEN.blit(guess_response_message, ((WIDTH/2) - (guess_response_message.get_width()/2) - 10, (HEIGHT/2)+20))
             # Render flag:
-            draw_flag(index)
+            drawFlag(countries.getCurrentIndex())
             # Region toggels
 
             # Cheating
-            cheating_text = RESULT_FONT.render("This is the flag of {}!".format(allNames[index.get()]), 1, BLACK)
+            cheating_text = RESULT_FONT.render("This is the flag of {}!".format(country_names[countries.getCurrentIndex()]), 1, BLACK)
             SCREEN.blit(cheating_text, (WIDTH - cheating_text.get_width() - 10, HEIGHT-35))
             # Hints
             if show_continent:
-                continent_text = HINT_FONT.render("Continent: " + getContinent(index.get()), 1, BLACK)
+                continent_text = HINT_FONT.render("Continent: " + getContinent(countries.getCurrentIndex()), 1, BLACK)
                 SCREEN.blit(continent_text, (10, 10))
             if show_population:
-                population_text = HINT_FONT.render("Population: " + str(getPopulation(index.get())), 1, BLACK)
+                population_text = HINT_FONT.render("Population: " + str(getPopulation(countries.getCurrentIndex())), 1, BLACK)
                 SCREEN.blit(population_text, (10 , 20 + HINT_FONT.get_height()))  
             # Render score:
             score_text = SCORE_FONT.render("Score:", 1, BLACK)
@@ -164,7 +177,7 @@ def main():
             pg.display.update()
             # Reset bool
             if guess_submitted:
-                index.randomize()
+                countries.update(guess_correct)
                 time.sleep(3)
             guess_submitted = False
 
