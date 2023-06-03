@@ -1,6 +1,7 @@
-import pygame as pg
+import numpy as np
 import os
 import pandas as pd
+import pygame as pg
 import random 
 import time
 
@@ -62,7 +63,7 @@ def draw_flag(index):
 def checkAnswer(guess, index):
     correctCountry = allNames[index.get()].lower()
     # parenthesis data fix:
-    correctCountry = (correctCountry+" (").split('(')[0][:-1]
+    correctCountry = (correctCountry + " (").split('(')[0][:-1] # TODO: use regex
 
     return guess.lower() == correctCountry
 
@@ -85,7 +86,7 @@ def main():
     # Initializations
     run = True
     index = indexation()
-    newFlag = False
+    guess_submitted = False
     guess = ''
     text = ''
     score = 0 
@@ -109,7 +110,7 @@ def main():
                 if event.key == pg.K_RETURN:
                     guess = text
                     text = ''
-                    newFlag = True
+                    guess_submitted = True
                 elif event.key == pg.K_BACKSPACE:
                     text = text[:-1]
                 else:
@@ -124,21 +125,24 @@ def main():
             SCREEN.blit(txt_surface, (input_box.x+5, input_box.y+5))
             pg.draw.rect(SCREEN, color, input_box, 2)
             # Check guess
-            if newFlag:
+            if guess_submitted:
                 if (checkAnswer(guess, index)):
-                    Msg = RESULT_FONT.render("You are correct! This is the flag of "+allNames[index.get()]+"!", 1, GREEN)
+                    guess_response_message = RESULT_FONT.render("You are correct! This is the flag of {}.".format(allNames[index.get()]), 1, GREEN)
                     score += 1
                     streak += 1
+                    
                 else:
-                    Msg = RESULT_FONT.render("Unfortunately this is the flag of "+allNames[index.get()]+".", 1, RED)
+                    guess_response_message = RESULT_FONT.render("Unfortunately this is the flag of {}.".format(allNames[index.get()]), 1, RED)
                     streak = 0
 
-                SCREEN.blit(Msg, ((WIDTH/2) - (Msg.get_width()/2) - 10, (HEIGHT/2)+20))
+                SCREEN.blit(guess_response_message, ((WIDTH/2) - (guess_response_message.get_width()/2) - 10, (HEIGHT/2)+20))
             # Render flag:
             draw_flag(index)
+            # Region toggels
+
             # Cheating
-            cheatingText = RESULT_FONT.render("This is the flag of "+allNames[index.get()]+"!", 1, BLACK)
-            SCREEN.blit(cheatingText, (WIDTH - cheatingText.get_width() - 10, HEIGHT-35))
+            cheating_text = RESULT_FONT.render("This is the flag of {}!".format(allNames[index.get()]), 1, BLACK)
+            SCREEN.blit(cheating_text, (WIDTH - cheating_text.get_width() - 10, HEIGHT-35))
             # Hints
             if show_continent:
                 continent_text = HINT_FONT.render("Continent: " + getContinent(index.get()), 1, BLACK)
@@ -147,11 +151,11 @@ def main():
                 population_text = HINT_FONT.render("Population: " + str(getPopulation(index.get())), 1, BLACK)
                 SCREEN.blit(population_text, (10 , 20 + HINT_FONT.get_height()))  
             # Render score:
-            scoreText = SCORE_FONT.render("Score:", 1, BLACK)
-            streakText = SCORE_FONT.render("Streak:", 1, BLACK)
-            alignWidth = min(scoreText.get_width(), streakText.get_width())
-            SCREEN.blit(scoreText, (WIDTH - alignWidth - 50, 10))
-            SCREEN.blit(streakText, (WIDTH - alignWidth - 50, 40))
+            score_text = SCORE_FONT.render("Score:", 1, BLACK)
+            streak_text = SCORE_FONT.render("Streak:", 1, BLACK)
+            alignWidth = min(score_text.get_width(), streak_text.get_width())
+            SCREEN.blit(score_text, (WIDTH - alignWidth - 50, 10))
+            SCREEN.blit(streak_text, (WIDTH - alignWidth - 50, 40))
             scoreTextNum = SCORE_FONT.render(str(score), 1, BLACK)
             SCREEN.blit(scoreTextNum, (WIDTH - scoreTextNum.get_width() - 10, 10))
             streakTextNum = SCORE_FONT.render(str(streak), 1, BLACK)
@@ -159,10 +163,10 @@ def main():
             # Update display
             pg.display.update()
             # Reset bool
-            if newFlag:
+            if guess_submitted:
                 index.randomize()
                 time.sleep(3)
-            newFlag = False
+            guess_submitted = False
 
     main()
 
