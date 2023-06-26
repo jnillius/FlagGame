@@ -4,6 +4,7 @@ import pandas as pd
 import pygame as pg
 import random 
 import time
+from difflib import SequenceMatcher
 
 # Game parameters
 WIDTH, HEIGHT = 900, 500
@@ -73,12 +74,59 @@ def drawFlag(country_index):
     flag, flagWidth, flagHeight = loadFlag(country_isos[country_index])
     SCREEN.blit(flag, ((WIDTH-flagWidth)/2, (HEIGHT/2)-flagHeight))
 
+
+def getAllCountryNames():
+    all_country_names = []
+    for country in country_names:
+        for alternatives in country.split('/'):
+            all_country_names.append(alternatives)
+    return all_country_names
+
+
+def autocompleteCountry(guess):
+    all_country_names = getAllCountryNames()
+    matching_countries = []
+    for country in all_country_names:
+        if country.lower().startswith(guess):
+            matching_countries.append(country.lower())
+    if len(matching_countries) == 0:
+        return getBestMatchingCountry(guess)
+    elif len(matching_countries) == 1:
+        return matching_countries[0]
+    else:
+        return extendGuess(guess, matching_countries)
+
+
+def extendGuess(guess, matching_countries):
+    len_shortest_country = len(min(matching_countries, key=len))
+    len_guess = len(guess)
+    if len_shortest_country == len_guess:
+        return guess
+    extend_guess = guess
+    for i in range(len_guess, len_shortest_country):
+        i_char = matching_countries[0][i]
+        for j in range(1, len(matching_countries)):
+            j_char = matching_countries[j][i]
+            if not i_char == j_char:
+                return extend_guess
+        extend_guess += i_char
+    return extend_guess
+
+
+def getBestMatchingCountry(guess):
+    all_country_names = getAllCountryNames()
+    match_ratio = [SequenceMatcher(None, country.lower(), guess.lower()).ratio() for country in all_country_names]
+    index_best_match = match_ratio.index(max(match_ratio))
+    best_match = all_country_names[index_best_match]
+    return best_match.lower()
+
+
 def checkAnswer(guess, country_index):
     # correctCountry = country_names[country_index].lower()
     allowed_guesses = country_names[country_index].lower().split('/')
     
     for allowed_guess in allowed_guesses:
-        if guess == allowed_guess:
+        if guess.lower() == allowed_guess.lower():
             return True
     return False
 
@@ -97,6 +145,8 @@ def main():
     # Hints
     show_population = True
     show_continent = True
+    allow_autocomplete = True
+    max_letter_clues = 1
     # Initializations
     run = True
     countries = Countries()
@@ -106,6 +156,7 @@ def main():
     score = 0 
     streak = 0
     guess_correct = False
+    ctrl_h_press = 0
     # Text box
     font = pg.font.Font(None, 32)
     clock = pg.time.Clock()
@@ -122,9 +173,18 @@ def main():
                 run = False
                 pg.quit()
             if event.type == pg.KEYDOWN:    
-                if event.key == pg.K_RETURN:
+                if event.key == pg.K_TAB and allow_autocomplete:
+                    text = autocompleteCountry(text.lower())
+                elif event.key == pg.K_DELETE:
+                    text = ''
+                elif event.key == pg.K_h and pg.key.get_mods() & pg.KMOD_CTRL:
+                    ctrl_h_press += 1
+                    hint_letter_limit = min(max_letter_clues, ctrl_h_press)
+                    text = country_names[countries.getCurrentIndex()][:hint_letter_limit].lower()
+                elif event.key == pg.K_RETURN:
                     guess = text
                     text = ''
+                    ctrl_h_press = 0
                     guess_submitted = True
                 elif event.key == pg.K_BACKSPACE:
                     text = text[:-1]
